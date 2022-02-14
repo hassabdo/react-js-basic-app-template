@@ -10,7 +10,7 @@ const LandingPage = () => {
     }
     const canonical = document.querySelector('link[rel="canonical"]');
     if(canonical){
-      canonical.setAttribute("href", process.env.REACT_APP_SITE_URL);
+      canonical.setAttribute("href", process.env.REACT_APP_SITE_URL || '');
     }
   })
   return (

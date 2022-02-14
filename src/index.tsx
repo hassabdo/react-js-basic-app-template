@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
 import ReactDOM from "react-dom";
-import "antd/dist/antd.css";
 import "./sass/ui-elements.scss";
-import "./sass/app.scss";
 import App from "./App";
 import store from "./stores/store";
 import { createBrowserHistory } from "history";
@@ -11,18 +9,9 @@ import { Provider, useDispatch } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
 // RCE CSS
 import ScrollToTop from "./tools/ScrollToTop";
-import Capitalize from 'capitalize';
 
 export const history = createBrowserHistory();
 
-
-declare global {
-  interface Window {
-    capitalize: (parm: string) => string;
-  }
-}
-
-window.capitalize = Capitalize || {};
 
 let authentification : any = localStorage.getItem("domicilier_authentificated");
 
