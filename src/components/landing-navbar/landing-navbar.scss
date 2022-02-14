@@ -1,0 +1,293 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+
+.landing-navbar {
+  @include flexbox();
+  @include justify-content(space-between);
+  @include align-items(center);
+  height: auto;
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  padding: 0 1rem;
+  z-index: 2;
+  background: $white;
+  .flex-navbar {
+    box-sizing: border-box;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    width: 100%;
+    height: auto;
+    position: relative;
+    @include flexbox();
+    @include justify-content(space-between);
+    @include align-items(center);
+    @include flex-direction(row);
+    @media (min-width: 768px) {
+      @include flex-direction(row);
+      max-height: 8rem;
+    }
+  }
+
+  box-shadow: 0px 4px 10px rgba(18, 21, 76, 0) !important;
+  @include transition(all, 0.2s, ease);
+  &.is_scrolled {
+    box-shadow: 0px 4px 10px rgba(18, 21, 76, 0.1) !important;
+  }
+
+  .logo-landing {
+    @include flexbox();
+    @include align-items(center);
+    @include justify-content(flex-start);
+    height: auto;
+    max-width: 16.4rem;
+    @media (max-width: 768px) {
+      margin-right: auto !important;
+    }
+  }
+  .centered-menu {
+    @media (max-width: 768px) {
+      display: none;
+    }
+    @include flexbox();
+    @include justify-content(space-around);
+    @include align-items(center);
+    height: 100%;
+    margin-left: auto;
+    position: relative;
+    box-sizing: border-box;
+    width: auto;
+    max-height: 8rem;
+    @media (min-width: 992px) {
+      margin-right: 3rem;
+    }
+    @media (max-width: 768px) {
+      width: 100%;
+      @include justify-content(center);
+      margin: auto;
+    }
+  }
+  .auth-btns {
+    @media (max-width: 768px) {
+      display: none;
+    }
+    @media (max-width: 992px) {
+      @include flex-direction(column);
+      .landing-auth-btn{
+        &:nth-child(1){
+          margin-bottom: 1rem;
+        }
+      }
+    }
+    @include flexbox();
+    @include align-items(center);
+    @include justify-content(space-around);
+    width: auto;
+    .landing-auth-btn {
+      @include flexbox();
+      @include align-items(center);
+      @include justify-content(center);
+      max-height: 3.6rem;
+      box-sizing: border-box;
+      padding: 1rem 2rem;
+      font-family: $font-family-base, sans-serif;
+      color: $dark-grey;
+      white-space: nowrap;
+      &:first-child {
+        margin-right: 2rem;
+      }
+      border: 1.5px solid $light-silver;
+      @include border-radius(5px);
+      @include transition(all, 0.2s, ease-in-out);
+      &:hover {
+        color: $blue;
+        border-color: $blue;
+      }
+      &:focus {
+        color: $blue;
+        border-color: $blue;
+      }
+      &.active {
+        color: $blue;
+        border-color: $blue;
+      }
+    }
+  }
+
+  .landing-navlink {
+    max-height: 8rem;
+    @include flexbox();
+    @include align-items(center);
+    @include justify-content(center);
+    font-size: 1.3rem;
+    @media (min-width: 768px) {
+      font-size: 1.2rem;
+    }
+    @media (min-width: 1024px) {
+      font-size: 1.4rem;
+    }
+    height: 100%;
+    box-sizing: border-box;
+    padding: 1rem 2rem;
+    font-family: $font-family-base, sans-serif;
+    color: $dark-grey;
+    position: relative;
+    margin-right: 2rem;
+    text-align: center;
+    white-space: nowrap;
+    @include transition(all, 0.2s, ease-in-out);
+    &:hover {
+      color: $blue;
+      border-color: $blue;
+      &:after {
+        @include transform(scaleX(0.6));
+      }
+    }
+    &.active {
+      color: $blue;
+      border-color: $blue;
+      &:after {
+        @include transform(scaleX(1));
+      }
+    }
+    &:after {
+      content: "";
+      display: block;
+      width: 100%;
+      position: absolute;
+      background: $blue;
+      height: 0.2rem;
+      @include transform(scaleX(0));
+      @media (min-width: 768px) {
+        top: 0px;
+      }
+      @media (max-width: 768px) {
+        bottom: 2rem;
+      }
+      @include transition(all, 0.2s, ease);
+    }
+  }
+}
+
+.menu-drawer-icon {
+  @include flexbox();
+  @include align-items(center);
+  @include justify-content(center);
+  width: 4rem;
+  height: 4rem;
+  background: transparent;
+  font-size: 2.8rem;
+  border: none;
+  color: $blue;
+  @include transition(all, 0.2s, ease);
+  &:focus {
+    outline: none;
+  }
+  @media (min-width: 768px) {
+    display: none;
+  }
+  &:active {
+    @include transform(scale(0.96));
+  }
+}
+
+.drawer-mobile-landing {
+  .ant-drawer-content{
+    background: $blue;
+  }
+  .ant-drawer-title {
+    position: absolute;
+    @include flexbox();
+    @include justify-content(flex-end);
+    @include align-items(flex-end);
+    padding: 1rem;
+    width: 100%;
+  }
+  .ant-drawer-close{
+    svg{
+      path{
+        fill: $white;
+      }
+    }
+  }
+  .ant-drawer-header {
+    padding: 0;
+    position: relative;
+  }
+  .menu-drawer-icon {
+    z-index: 2;
+    color: $white;
+  }
+  .ant-drawer-body {
+    padding-top: 6rem;
+    color: white;
+    font-family: $font-family-base;
+    .centered-menu {
+      @include flexbox();
+      @include flex-direction(column);
+
+      .landing-navlink {
+        font-size: 2rem;
+        @media (min-width: 768px) {
+          font-size: 1.6rem;
+        }
+        box-sizing: border-box;
+        padding: 1rem 2rem;
+        font-family: $font-family-base, sans-serif;
+        color: $white;
+        position: relative;
+        text-align: left;
+        @include transition(all, 0.2s, ease-in-out);
+        &:hover {
+          color: $dark-grey;
+          &:after {
+            @include transform(scaleX(0.6));
+          }
+        }
+        &:focus {
+          color: $dark-grey;
+        }
+        &.active {
+          color: $dark-grey;
+        }
+      }
+    }
+    .auth-btns {
+      @include flexbox();
+      @include align-items(center);
+      @include justify-content(space-around);
+      @include flex-direction(column);
+      width: auto;
+      .landing-auth-btn {
+        @include flexbox();
+        @include align-items(center);
+        @include justify-content(center);
+        max-height: 3.6rem;
+        box-sizing: border-box;
+        width: 100%;
+        max-width: 20rem;
+        padding: 1rem 2rem;
+        font-family: $font-family-base, sans-serif;
+        color: $white;
+        margin-top: 1rem;
+        border: 1.5px solid $light-silver;
+        @include border-radius(5px);
+        @include transition(all, 0.2s, ease-in-out);
+        &:hover {
+          color: $white;
+          border-color: $white;
+        }
+        &:focus {
+          color: $blue;
+          background: $white;
+          border-color: $white;
+        }
+        &.active {
+          color: $blue;
+          background: $white;
+          border-color: $white;
+        }
+      }
+    }
+  }
+}
